@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #212121; width: 95%; margin-left: auto; margin-right: auto;">
+  <ul class="nav navbar-nav navbar-right">
+    <li routerLinkActive="active" *ngIf="!isAuth">
+      <a routerLink="authentification/inscription" class="nav-link">Créer un nouveau compte</a>
+    </li>
+    <li routerLinkActive="active" *ngIf="!isAuth">
+      <a routerLink="authentification/connexion" class="nav-link">Authentification</a>
+    </li>
+    <li>
+      <a (click)="onSignOut()" *ngIf="isAuth" style="cursor:pointer;">Déconnexion</a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav">
+    <li routerLinkActive="active">
+      <a routerLink="livres" class="nav-link">Livres</a>
+    </li>
+  </ul>
+</nav>

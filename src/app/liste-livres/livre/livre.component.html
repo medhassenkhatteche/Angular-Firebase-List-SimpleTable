@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-12">
+    <img style="max-width: 300px" *ngIf="livre.photo" [src]="livre.photo">
+    <h1>Titre : {{ livre.titre }}</h1>
+    <h2>Auteur : {{ livre.auteur}}</h2>
+    <h3>Type : {{livre.type}}</h3>
+    <h3>Description : {{livre.description}}</h3>
+    <h3>Editeur : {{livre.editeur}}</h3>
+    <h3>Date de parution : {{livre.dateParution}}</h3>
+    <h3>Prix : {{livre.prix}}</h3>
+    <h3>Disponibilite : {{livre.disponibilite}}</h3>
+    <button class="btn btn-default" (click)="onBack()">Retour à la liste</button>
+  </div>
+</div>

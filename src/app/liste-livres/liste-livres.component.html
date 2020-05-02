@@ -1,0 +1,52 @@
+<div class="row">
+
+  <div class="col-xs-12">
+    <h2>Ceci est une liste des livres enregistrés</h2>
+    <h3>Liste des livres</h3>
+    <div class="list-group">
+      <button class="list-group-item"
+              *ngFor="let livre of livres; let i = index"
+              (click)="onViewLivre(i)">
+        <h4 class="list-group-item-heading">
+          {{ livre.titre }}
+          <button class="btn btn-default pull-right" (click)="onDeleteLivre(livre)">
+            <span class="glyphicon glyphicon-minus"></span>
+          </button>
+        </h4>
+        <p class="list-group-item-text">{{ livre.auteur }}</p>
+      </button>
+    </div>
+    <button class="btn btn-primary" (click)="onNewLivre()">Ajouter un nouveau livre</button>
+  </div>
+
+
+  <div>
+    <h2>Ceci est un tableau présentant les livres enregistrés</h2>
+
+    <form class="form-inline">
+      <input class="form-control" name="searchInput" placeholder="Rechercher" #searchInput="ngModel" [(ngModel)]="searchText" style="width: 80%">
+      <button class="btn btn-warning" (click)="searchText=''">X</button>
+    </form>
+    <table class="table table-responsive">
+      <thead>
+      <th>Photos</th>
+      <th>Titre</th>
+      <th>Auteur</th>
+      <th>Actions</th>
+      </thead>
+      <ng-container *ngFor="let livre of livres; let i = index">
+        <tr class="table-bordered" *ngIf="filterCondition(livre)">
+          <td><img style="width: 20%;margin-left: auto;margin-right: auto;display: flex;" *ngIf="livre.photo" [src]="livre.photo"></td>
+          <td>{{ livre.titre }}</td>
+          <td>{{ livre.auteur }}</td>
+          <td>
+            <button class="btn btn-info" (click)="onViewLivre(i)">Détail</button>
+            <button class="btn btn-success" (click)="onEditLivre(i)">Modifier</button>
+            <button class="btn btn-danger" (click)="onDeleteLivre(livre)">Supprimer</button>
+          </td>
+        </tr>
+      </ng-container>
+    </table>
+  </div>
+
+</div>
